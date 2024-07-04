@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Results - Department</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+    a {
+      display: inline-block;
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #FF5733; /* Adjusted color to red */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: #e74c3c; /* Darker red on hover */
+    }
+  </style>
+</head>
+<body>
+  <a href="{% url 'Student:myprofile' %}">Home</a>
+
+  <h1>Results</h1>
+
+  <table>
+    <tr>
+      <th>Sl no</th>
+      <th>Participant</th>
+      <th>Event Name</th>
+      <th>Position</th>
+      <th>Department</th>
+      <th>Score</th>
+      <th>Date</th>
+    </tr>
+    {% for result in results %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ result.participant_id.student_id.student_name }}</td>
+      <td>{{ result.participant_id.event_id.event_name }}</td>
+      <td>{{ result.result_position }}</td>
+      <td>{{ result.department.dept_name }}</td>
+      <td>{{ result.result_score }}</td>
+      <td>{{ result.result_date }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

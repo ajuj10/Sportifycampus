@@ -1,0 +1,36 @@
+{% extends 'WebCoordinator/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Points Table</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Participent</td>
+            <td>Name</td>
+            <td>Position</td>
+            <td>Department</td>
+            <td>Score</td>
+            <td>Date</td>
+        </tr>
+        {% for i in result %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.participant_id.student_id.student_name}}</td>
+            <td>{{i.participant_id.event_id.e_name}}</td>
+            <td>{{i.result_position}}</td>
+            <td>{{i.department.dept_name}}</td>
+            <td>{{i.result_score}}</td>
+            <td>{{i.result_date}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock content %}
+  

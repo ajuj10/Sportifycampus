@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate OTP</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Define custom styles here */
+        .login100-form-btn {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 20px; /* Rounded square shape */
+        }
+        .login100-form-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        /* Add any other custom styles as needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrap">
+            <div class="login100-form-title">
+                <span class="login100-form-title-1">
+                    Validate OTP
+                </span>
+            </div>
+            <form action="" method="POST" class="login100-form validate-form">
+                {% csrf_token %}
+                <div class="wrap-input validate-input" data-validate="Email is required">
+                    <span class="label-input">OTP</span>
+                    <input class="input" type="text" autocomplete="off" name="txt_otp" required placeholder="Enter OTP here" autofocus>
+                </div>
+                <div class="container-form-btn">
+                    <input type="submit" value="Submit OTP" class="login100-form-btn">
+                    <input type="reset" value="Cancel" class="login100-form-btn">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

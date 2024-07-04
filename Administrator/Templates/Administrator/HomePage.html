@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HOME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                    <a href="{% url 'webadmin:District' %}">District</a>
+            </td>
+        </tr>
+        <tr>
+            <a href="{% url 'webadmin:category' %}">Department</a><br><br>
+        </tr>
+        <tr>
+            <a href="{% url 'webadmin:Adminregistration' %}">AdminRegistration</a><br>
+        </tr>
+        <tr>
+        <a href="{% url 'webadmin:subcategory' %}">subcategory</a><br>
+        </tr>
+        <tr>
+            <a href="{% url 'webadmin:Place' %}">Place</a><br><br>
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:Semester' %}">Semester</a><br>  
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:Subject' %}">Subject</a><br>  
+        </tr>
+
+        <tr>        
+            <a href="{% url 'webadmin:CoOrdinatorRegistration' %}">CoOrdinatorRegistration</a><br>  
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:CoordinatorListNew' %}">CordinatorList</a><br>  
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:CoordinatorListAccepted' %}">CordinatorListAccepted</a><br>  
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:CoordinatorListRejected' %}">CordinatorListRejected</a><br>  
+        </tr>
+
+
+
+        <tr>        
+            <a href="{% url 'webadmin:studentListNew' %}">StudentList</a><br>  
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:StudentListAccepted' %}">StudentListAccepted</a><br>  
+        </tr>
+        <tr>        
+            <a href="{% url 'webadmin:studentListRejected' %}">StudentListRejected</a><br>  
+        </tr>
+
+
+
+    </table>    
+</body>
+</html>

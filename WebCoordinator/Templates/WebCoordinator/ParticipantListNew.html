@@ -1,0 +1,72 @@
+{% extends 'WebCoordinator/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant List</title>
+</head>
+<body>
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+         <font size="6" color:blue>TEAM EVENT PARTICIPANTS</font>
+        </tr>
+        <tr>
+            <th>Sl.No</th>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>score</th>  
+            <th>View</th>
+            <th>Action</th>
+        </tr>
+        {% for i in userdata %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.participant_date}}</td>
+            <td>{{i.student_id.student_name}}</td>
+            <td>{{i.participant_status}}</td>
+            <td>{{i.participant_score}}</td>
+            <td><a href="{% url 'WebCoordinator:teammateListNew' i.id %}">View teammates</a></td>
+            <td>
+                <a href="{% url 'WebCoordinator:acceptparticipant' i.id %}">Accept</a>
+                <a href="{% url 'WebCoordinator:rejectparticipant' i.id %}">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <font size="6" color:blue>SINGLE EVENT PARTICIPANTS</font>
+            </tr>
+        <tr>
+            <th>Sl.No</th>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>score</th>   
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.participant_date}}</td>
+            <td>{{i.student_id.student_name}}</td>
+            <td>{{i.participant_status}}</td>
+            <td>{{i.participant_score}}</td> 
+            <td>
+                <a href="{% url 'WebCoordinator:acceptparticipant' i.id %}">Accept</a>
+                <a href="{% url 'WebCoordinator:rejectparticipant' i.id %}">Reject</a>
+            </td>                
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>
+{% endblock content %}

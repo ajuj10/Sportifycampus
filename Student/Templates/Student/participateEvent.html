@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>SPORT FIRE</title>
+</head>
+<body>
+      <table border="1" align="center" cellpadding="1">
+        <tr>
+            <td>sl no</td>
+            <td>Type</td>
+            <td>Gender</td>
+            <th>category</th>
+            <th>Subcategory</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Details</th>
+            <th>venue</th>
+        </tr>
+        {% for i in events %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.type.type_name}}</td>
+            <td>{{i.e_gender}}</td>
+            <td>{{i.category.category_name}}</td>
+            <td>{{i.subcategory.subcategory_name}}</td>
+            <td>{{i.e_date}}</td>
+            <td>{{i.e_time}}</td>
+            <td>{{i.e_details}}</td>
+            <td>{{i.e_venue}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

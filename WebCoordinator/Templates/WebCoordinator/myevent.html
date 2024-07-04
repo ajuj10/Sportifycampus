@@ -1,0 +1,48 @@
+{% extends 'WebCoordinator/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant List</title>
+</head>
+<body>
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+         <font size="6" color:blue>TEAM EVENT</font>
+        </tr>
+        <tr>
+            <th>Sl.No</th>
+            <th>Event Name</th>
+        </tr>
+        {% for i in team %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.event_id.e_name}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <font size="6" color:blue>SINGLE EVENT </font>
+            </tr>
+        <tr>
+            <th>Sl.No</th>
+            <th>Event Name</th>
+        </tr>
+        {% for i in userdata %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.event_id.e_name}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>
+{% endblock content %}

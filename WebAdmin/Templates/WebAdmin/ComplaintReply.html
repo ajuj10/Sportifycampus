@@ -1,0 +1,29 @@
+{% extends 'WebAdmin/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply Complaint</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td>Reply</td>
+                <td><input type="text" name="txtreply" placeholder="Enter the reply" required ></td>
+            </tr>
+            <tr>
+                
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Save">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
+{% endblock content  %}

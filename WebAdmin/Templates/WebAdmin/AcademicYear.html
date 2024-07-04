@@ -1,0 +1,48 @@
+{% extends 'WebAdmin/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcademicYear</title>
+</head>
+<body>
+  
+
+  <form name="deptfrm" method="post">
+    {% csrf_token %}
+    <table border="1" align="center">
+      <tr>
+        <td>AcademicYear</td>
+        <td><input type="text" name="txtAcademicYear" placeholder="Enter AcademicYear" required value="{{edit.acdemic_year}}"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" name="btnsave" value="Save">
+          <input type="reset" name="btncancel" value="Cancel">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <br>
+  <table align="center">
+    <tr>
+      <td>#</td>
+      <td>AcademicYear</td>
+      <td>Action</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.acdemic_year}}</td>
+      <td>
+        <a href="{% url 'WebAdmin:delAcademicYear' i.id %}">Delete</a>
+        <a href="{% url 'WebAdmin:editAcademicYear' i.id %}">Edit</a>
+      </td> 
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+{% endblock content %}

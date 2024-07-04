@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin registration</title>
+</head>
+<body>
+  <a href="{% url 'webadmin:LoadingHomePage' %}">Home</a>
+  <form name="Adminreg" method="post">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>Register</td>
+        <tr>
+          <td><input type="text" name="txtname" placeholder="Enter name" required value="{{adminedit.a_name}}"></td>
+        </tr>
+        <tr>
+        <td><input type="text" name="txtcontact" placeholder="Enter contact" required value="{{adminedit.a_contact}}"></td>        
+        </tr>
+        <tr>
+        <td><input type="text" name="txtemail" placeholder="Enter email" required value="{{adminedit.a_email}}"></td>
+        </tr>
+        <tr>
+        <td><input type="password" name="txtpass" placeholder="Enter password" required value="{{adminedit.a_password}}"></td>
+       </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" name="btnsave" value="Save">
+          <input type="reset" name="btncancel" value="Cancel">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <table border="1">
+    <tr>
+      <td>#</td>
+      <td>name</td>
+      <td>contact</td>
+      <td>email</td>
+      <td>password</td>
+    </tr>
+  {% for i in adminregdata %}  
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.a_name}}</td> 
+      <td>{{i.a_contact}}</td> 
+      <td>{{i.a_email}}</td> 
+      <td>{{i.a_password}}</td> 
+      <td>
+      <a href="{% url 'webadmin:delete_admin' i.id %}">Delete</a>
+      <a href="{% url 'webadmin:edit_admin' i.id %}">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends 'WebAdmin/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semester</title>
+</head>
+<body>
+
+  <form name="semfrm" method="post">
+    {% csrf_token %}
+    <table border=1 align=center>
+      <tr>
+        <td>Semester</td>
+        <td><input type="text" name="txtsem" placeholder="Enter semester" required value="{{semedit.sem_no}}"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" name="btnsave" value="Save">
+          <input type="reset" name="btncancel" value="Cancel">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <table border="1" align="center">
+    <tr>
+      <td>sl no</td>     
+      <td>semester</td>
+      <td>Action</td>
+    </tr>
+  {% for i in semester %}  
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{i.sem_no}}</td> 
+    <td>
+    <a href="{% url 'WebAdmin:delete_sem' i.id %}">Delete</a><br> 
+    <a href="{% url 'WebAdmin:edit_sem' i.id  %}">Edit</a><br> 
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
+{% endblock content %}

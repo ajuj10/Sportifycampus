@@ -1,0 +1,100 @@
+{% extends 'Student/head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>SPORT FIRE</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray */
+            color: #212529; /* Dark gray */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #dee2e6; /* Gray */
+            margin-bottom: 1rem;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6; /* Gray */
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #dc3545; /* Red */
+            color: #fff;
+        }
+
+        td a {
+            color: #dc3545; /* Red */
+        }
+
+        td a:hover {
+            color: #ff6961; /* Light red */
+            text-decoration: none;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sl No</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Subcategory</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Venue</th>
+                    <th scope="col">Poster</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in event %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.e_gender }}</td>
+                    <td>{{ i.category.category_name }}</td>
+                    <td>{{ i.subcategory.subcategory_name }}</td>
+                    <td>{{ i.e_date }}</td>
+                    <td>{{ i.e_time }}</td>
+                    <td>{{ i.e_details }}</td>
+                    <td>{{ i.e_venue }}</td>
+                    <td><img src="{{event.e_poster.url}}" width="50" height="50" alt=""></td>
+                    <td><a href="{% url 'Student:ApplyEvent' event.id %}" class="btn btn-danger">Apply now</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if msg %}
+    <script>
+        alert("{{msg}}")
+        window.location = "{% url 'Student:ViewsoloEvents' %}"
+    </script>
+    {% endif %}
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>
+{% endblock content %}

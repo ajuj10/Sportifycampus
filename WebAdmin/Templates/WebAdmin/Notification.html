@@ -1,0 +1,38 @@
+{% extends 'WebAdmin/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Form</title>
+</head>
+<body>
+    <h1>Notification Form</h1>
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="notification">Notification:</label><br>
+        <textarea id="notification" name="txtnotification" rows="4" cols="50" required></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <table border="1">
+        <tr>
+          <td>sl no</td>
+          <td>Notification</td>
+          <td>Action</td>
+        </tr>
+        {% for i in notify %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.content}}</td>
+          <td>
+            <a href="{% url 'WebAdmin:deletenotify' i.id %}">Delete</a>
+            
+          </td> 
+        </tr>
+        {% endfor %}
+      </table>
+</body>
+</html>
+
+{% endblock content %}

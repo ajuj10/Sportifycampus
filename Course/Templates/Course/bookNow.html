@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <style>
+            /* Define styles for the payment button */
+            .payment-button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #007bff; /* Button color */
+                color: #fff; /* Text color */
+                text-decoration: none;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease; /* Smooth transition on hover */
+            }
+
+            .payment-button:hover {
+                background-color: #0056b3; /* Change color on hover */
+            }
+        </style>
+    </head>
+    <body>
+        <form method="POST" id="UserReg" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        Name
+                        <input type="text" name="txtname" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                        <input type="text" name="txtaddress" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Qualification
+                        <input type="text" name="txtqualification" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        E-mail<input type="text" name="txtemail" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                       <input type="submit" name="Register" value="save"><br>
+                       <a href="{% url 'Course:payment' %}" class="payment-button">Pay Amount Now</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

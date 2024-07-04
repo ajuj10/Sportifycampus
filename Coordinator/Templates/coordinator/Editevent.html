@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+</head>
+<body>
+    <h1>Edit Event</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <td>
+                    <label for="event type">Event type</label>
+                    <select name="type" id="type">
+                        <option value="select">Select</option>
+                        {% for i in type %}
+                            <option value="{{i.id}}" {% if i.id == event.type.id %} selected {% endif %}>{{i.type_name}}</option>    
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender <input type="text" name="txtgender" value="{{ event.e_gender }}"> </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="category">Event category</label>
+                    <select name="category" id="category">
+                        <option value="select">Select</option>
+                        {% for i in category %}
+                            <option value="{{i.id}}" {% if i.id == event.category.id %} selected {% endif %}>{{i.category_name}}</option>    
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    subcategory<select name="subcategory" id="subcategory">
+                        <option value="">...Select...</option>
+                        {% for i in subcategories %}
+                            <option value="{{i.id}}" {% if i.id == event.subcategory.id %} selected {% endif %}>{{i.subcategory_name}}</option>    
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Date
+                    <input type="text" name="txtdate" value="{{ event.e_date }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Time
+                    <input type="text" name="txttime" value="{{ event.e_time }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Details<input type="text" name="txtdetails" value="{{ event.e_details }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Venue<input type="text" name="txtvenue" value="{{ event.e_venue }}">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="submit" name="Save" value="Save">
+                    <a href="{% url 'HomePage' %}">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

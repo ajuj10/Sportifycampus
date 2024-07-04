@@ -1,0 +1,151 @@
+{% extends 'WebAdmin/Header.html' %}
+{% block content  %}
+<html>
+    <body>
+        <form method="POST" id="UserReg" enctype="multipart/form-data">
+            {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <td>Gender
+                    <input type="radio" name="gender" value="M" >M
+                    <input type="radio" name="gender" value="F" >F
+                    <input type="radio" name="gender" value="Mixed" >Mixed
+                </td>
+            </tr>
+             <tr>
+                <td>
+                Event name
+                <input type="text" name="txteventname" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+               <label for="category">Event category</label>
+                <select name="category" id="category">
+                    <option value="select">Select</option>
+                        {% for i in category %}
+                    <option value="{{i.id}}">{{i.category_name}}</option>    
+                        {% endfor %}
+                </select>
+                </td>
+            </tr>
+            <tr>
+                  <td> 
+                    subcategory<select name="subcategory" id="subcategory">
+                        <option value="">...Select...</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                Date
+                <input type="date" name="txtdate" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                time
+                <input type="time" name="txttime" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                details<input type="text" name="txtdetails" value="">
+                </td>
+            </tr>
+            
+                <tr>
+                    <td>
+                venue<input type="text" name="txtvenue" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                Poster<input type="file" name="fileImage" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Event type
+                        <input type="radio" name="type" value="Solo" >solo
+                        <input type="radio" name="type" value="Team" >Team
+                    </td>
+                </tr>
+                <tr>
+                    <td>Teammate count</td>
+                    <td>
+                        <input type="number" name="count" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                   <label for="coordinator">Event Coordinator</label>
+                    <select name="coordinator" id="coordinator">
+                        <option value="select">Select</option>
+                            {% for i in coordinator %}
+                        <option value="{{i.id}}">{{i.coordinator_name}}</option>    
+                            {% endfor %}
+                    </select>
+                    </td>
+                </tr>              
+                <td align="center">
+                    <input type="submit" name="Save" value="save">
+                    <input type="reset" name="Cancel" value="cancel">
+                </td>
+            </tr>
+        </table>
+
+        </form>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <td>sl no</td>
+                <td> Name</td>
+                <td>Gender</td>
+                <th>category</th>
+                <th>Subcategory</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Details</th>
+                <th>venue</th>
+                <th>Poster</th>
+                <th>Event type</th>
+                <th>Teammate count</th>
+                <th>Coordinator Name</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>               
+                <td>{{forloop.counter}}</td>
+                <td>{{i.e_name}}</td>
+                <td>{{i.e_gender}}</td>
+                <td>{{i.category.category_name}}</td>
+                <td>{{i.subcategory.subcategory_name}}</td>
+                <td>{{i.e_date}}</td>
+                <td>{{i.e_time}}</td>
+                <td> {{i.e_details}}</td>
+                <td>{{i.e_venue}}</td>
+                <td><img src="{{ i.e_poster.url }}" width="150" height="150" alt=""></td>
+                <td>{{i.type_name}}</td>
+                <td>{{i.teammate_count}}</td>
+                <td>{{i.coordinator.coordinator_name}}</td>
+                <td colspan="2" align="center"><a class="d-card-button" href="{% url 'WebAdmin:eventdelete' i.id%}">delete event</a>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#category").change(function () {
+        var did = $(this).val();
+        var ur = "{% url  'WebAdmin:ajaxcategory' %}";
+        $.ajax({
+            url: ur,
+            data: { did: did, },
+            success: function (data) {
+                $("#subcategory").html(data);
+            },
+        });
+    });
+</script>
+</html>
+{% endblock content %}

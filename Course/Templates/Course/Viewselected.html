@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Courses offered</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sl No</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Course Duration</th>
+                    <th scope="col">Course Price</th>
+                    <th scope="col">Course Details</th>
+                    <th scope="col">Course Startdate</th>
+                    <th scope="col">Course enddate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ course.course_name}}</td>
+                    <td>{{ course.course_duration}}</td>
+                    <td>{{ course.course_price}}</td>
+                    <td>{{ course.course_details}}</td>
+                    <td>{{ course.course_startdate}}</td>
+                    <td>{{ course.course_enddate}}</td>
+                    <td> <a href="{% url 'Course:Register' course.id %}">Register</a><td>  
+                    <td> <a href="{% url 'Course:bookNow' course.id %}">Book Now</a><td>  
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

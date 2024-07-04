@@ -1,0 +1,32 @@
+{% extends 'WebAdmin/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pie Chart</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="pie-chart"></div>
+    <script>
+        var data = {{ data|safe }};
+        var labels = data.map(function(item) { return item.label; });
+        var values = data.map(function(item) { return item.value; });
+
+        var trace = {
+            labels: labels,
+            values: values,
+            type: 'pie'
+            
+        };
+
+        var layout = {
+            title: 'EVENT PARTICIPATION PECENTAGE'
+        };
+
+        Plotly.newPlot('pie-chart', [trace], layout);
+    </script>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'WebAdmin/Header.html' %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Points Table</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Department</td>
+            <td>Total</td>
+            <td>Action</td>            
+        </tr>
+        {% for i in new  %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.dept.dept_name}}</td>
+            <td>{{i.total}}</td>
+            <td><a href="{% url 'WebAdmin:ViewAllresults' i.dept.id %}">View Events</a></td> 
+        </tr>
+        {% endfor %}
+    </table> 
+    <a href="{% url 'WebAdmin:Publishresults' %}">PUBLISH</a>
+  </form>
+</body>
+</html>
+{% endblock content %}

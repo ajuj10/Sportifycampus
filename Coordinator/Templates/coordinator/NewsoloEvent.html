@@ -1,0 +1,97 @@
+<html>
+    <body>
+        <form method="POST" id="UserReg" enctype="multipart/form-data">
+            {% csrf_token %}
+        <table border="1" align="center">
+               <td>Gender <input type="text" name="txtgender" value=""> </td>
+             </tr>
+            <tr>
+                <td>
+               <label for="category">Event category</label>
+                <select name="category" id="category">
+                    <option value="select">Select</option>
+                        {% for i in category %}
+                    <option value="{{i.id}}">{{i.category_name}}</option>    
+                        {% endfor %}S
+                    
+                </select>
+                </td>
+            </tr>
+            <tr>
+                  <td> 
+                    subcategory<select name="subcategory" id="subcategory">
+                        <option value="">...Select...</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                Date
+                <input type="text" name="txtdate" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                time
+                <input type="text" name="txttime" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                details<input type="text" name="txtdetails" value="">
+                </td>
+            </tr>
+            
+                <tr>
+                    <td>
+                venue<input type="text" name="txtvenue" value="">
+                    </td>
+                </tr>
+                <td align="center">
+                    <input type="submit" name="Save" value="save">
+                    <input type="reset" name="Cancel" value="cancel">
+                </td>
+            </tr>
+        </table>
+
+        </form>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <td>sl no</td>
+                <td>Gender</td>
+                <th>category</th>
+                <th>Subcategory</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Details</th>
+                <th>venue</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.e_gender}}</td>
+                <td>{{i.category.category_name}}</td>
+                <td>{{i.subcategory.subcategory_name}}</td>
+                <td>{{i.e_date}}</td>
+                <td>{{i.e_time}}</td>
+                <td>{{i.e_details}}</td>
+                <td>{{i.e_venue}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#category").change(function () {
+        var did = $(this).val();
+        var ur = "{% url  'Coordinator:ajaxcategory' %}";
+        $.ajax({
+            url: ur,
+            data: { did: did, },
+            success: function (data) {
+                $("#subcategory").html(data);
+            },
+        });
+    });
+</script>
+</html>

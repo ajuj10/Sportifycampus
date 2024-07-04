@@ -1,0 +1,42 @@
+<!-- search_events.html -->
+
+{% extends 'Student/head.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Search Results</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sl No</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Category</th>
+                <th scope="col">Subcategory</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Details</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ event.e_gender }}</td>
+                <td>{{ event.category.category_name }}</td>
+                <td>{{ event.subcategory.subcategory_name }}</td>
+                <td>{{ event.e_date }}</td>
+                <td>{{ event.e_time }}</td>
+                <td>{{ event.e_details }}</td>
+                <td>{{ event.e_venue }}</td>
+                <td><a href="{% url 'Student:ApplyEvent' event.id %}" class="btn btn-danger">Apply now</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9">No events found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

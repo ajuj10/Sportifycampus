@@ -1,0 +1,35 @@
+{% extends 'Student/head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complaints</title>
+</head>
+<body>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table align="center">
+       
+                <td>Title</td>
+                <td><input type="text" name="txttitle" placeholder="Enter title" required ></td>
+            </tr>
+           
+            <tr>
+                <td>Complaints</td>
+                <td><input type="text" name="txtcomplaint" placeholder="Enter Complaints" required ></td>
+            </tr>
+           
+                
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Save">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}
