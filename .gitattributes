@@ -2,3 +2,9 @@
 *.css text
 *.js text
 *.html text
+* text=auto
+*.css text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.txt text eol=lf
