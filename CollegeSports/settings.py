@@ -44,9 +44,7 @@ INSTALLED_APPS = [
     'Guest',
     'WebAdmin',
     'WebGuest',
-    'WebCoordinator',
-    'Course',
-    'CourseAdmin',
+    'WebCoordinator'
 ]
 
 MIDDLEWARE = [

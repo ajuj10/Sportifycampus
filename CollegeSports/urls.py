@@ -29,8 +29,6 @@ urlpatterns = [
     path('WebAdmin/',include('WebAdmin.urls')),
     path('WebGuest/',include('WebGuest.urls')),
     path('WebCoordinator/',include('WebCoordinator.urls')), 
-    path('Course/',include('Course.urls')),
-    path('CourseAdmin/',include('CourseAdmin.urls')), 
 ]
 
 
