@@ -1,7 +1,5 @@
 from django.db import models
 from WebGuest.models import *
-from Student.models import*
-from Coordinator.models import*
 from datetime import date
 
 #Create your models here.

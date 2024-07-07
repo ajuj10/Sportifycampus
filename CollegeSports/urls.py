@@ -21,14 +21,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Administrator/',include('Administrator.urls')),
     path('Student/',include('Student.urls')),
-    path('Guest/',include('Guest.urls')),
-    path('Coordinator/',include('Coordinator.urls')),
-
     path('WebAdmin/',include('WebAdmin.urls')),
-    path('WebGuest/',include('WebGuest.urls')),
     path('WebCoordinator/',include('WebCoordinator.urls')), 
+     path('WebGuest/',include('WebGuest.urls'))
 ]
 
 

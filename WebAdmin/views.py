@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
-from WebAdmin.models import *
-from WebGuest.models import *
 from Student.models import*
+from WebGuest.models import *
 from WebCoordinator.models import*
+from WebAdmin.models import *
 # Create your views here.
 
 def HomePage(request):

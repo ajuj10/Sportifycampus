@@ -78,9 +78,9 @@ def ComplaintReply(request,cid):
         complaint.complaint_reply=request.POST.get('txtreply')
         complaint.complaint_status=1
         complaint.save()
-        return redirect("Administrator:complaintview")
+        return redirect("WebAdmin:complaintview")
     else:
-        return render(request,"Administrator/replycomplaints.html",{'complaint':complaint})
+        return render(request,"WebAdmin/replycomplaints.html",{'complaint':complaint})
 #feedback
 def feedbackInsert(request):
     if request.method=="POST":

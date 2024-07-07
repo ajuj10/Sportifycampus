@@ -1,5 +1,5 @@
 from django.urls import path,include
-from Guest import *
+from WebGuest import *
 from Student import views
 app_name = "Student"
 
