@@ -41,13 +41,6 @@ def changepassword(request):
         return render(request,"Student/UserChangepassword.html")
     
 #Students can view  team and solo events seperately using these
-'''def ViewsoloEvents(request):
-    data=tbl_newsoloevent.objects.all()
-    return render(request,"Student/ViewsoloEvents.html",{'data':data})
-
-def ViewteamEvents(request):
-    data=tbl_newteamevent.objects.all()
-    return render(request,"Student/ViewteamEvents.html",{'data':data})'''
 
 
 def ViewsoloEvents(request):
@@ -91,22 +84,6 @@ def feedbackInsert(request):
         return render(request,"Student/feedback.html")
     else:
         return render(request,"Student/feedback.html")
-
-# def paricipateEvent():
-#     data=tbl_newevent.objects.get(id=request.session["uid"])
-#     return render("Student/participateEvent.html",{'data':data})
-    
-'''def ApplysoloEvent(request,id):
-    event = tbl_newsoloevent.objects.get(id=id)
-    student = tbl_student.objects.get(id=request.session["uid"])
-    tbl_participants.objects.create(soloevent_id=event, student_id=student) 
-    return render(request, "Student/ViewsoloEvents.html", {'msg': "Application success"})
-
-def ApplyteamEvent(request, id):
-     event = tbl_newteamevent.objects.get(id=id)
-     student = tbl_student.objects.get(id=request.session["uid"])
-     data = tbl_participants.objects.create(teamevent_id=event, student_id=student)
-     return redirect("Student:addteammates",data.id)'''
 
 
 def ApplyEvent(request, id):
